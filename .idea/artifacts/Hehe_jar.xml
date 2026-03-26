@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Hehe:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Hehe_jar</output-path>
+    <root id="archive" name="Hehe.jar">
+      <element id="module-output" name="Hehe" />
+    </root>
+  </artifact>
+</component>
