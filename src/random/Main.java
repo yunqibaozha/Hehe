@@ -24,9 +24,15 @@ public class Main {
 			try (Reader reader = new FileReader("D:/Random/seed.prop")) {
 				Properties prop = new Properties();
 				prop.load(reader);
-				Main.seed = Long.parseLong(prop.getProperty("seed"));
+				String seeds = prop.getProperty("seed", "");
+				String ignored = seeds.replace(" ", "");
+				String[] seed = seeds.split(",");
+				if (seed.length == 0) throw new NumberFormatException();
 				Main.flag = true;
-				prop.setProperty("seed", "EMPTY");
+				Main.seed = Long.parseLong(seed[0]);
+				StringJoiner newSeed = new StringJoiner(",");
+				for (int i = 1; i < seed.length; i++) newSeed.add(seed[i]);
+				prop.setProperty("seed", newSeed.toString());
 				Writer writer = new FileWriter("D:/Random/seed.prop");
 				prop.store(writer, null);
 			} catch (FileNotFoundException e) {
