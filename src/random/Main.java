@@ -37,10 +37,13 @@ public class Main {
 				prop.store(writer, null);
 			} catch (FileNotFoundException e) {
 				System.err.println("无配置文件");
+				Main.flag = false;
 			} catch (IOException e) {
 				System.err.println("读写配置文件IO错误");
+				Main.flag = false;
 			} catch (NumberFormatException e) {
 				System.err.println("无法解析种子");
+				Main.flag = false;
 			}
 		}
 		
